@@ -1,0 +1,101 @@
+# generated: 2026-04-09
+# last_updated: 2026-04-09
+# project: garagedom-api
+# project_key: NOKEY
+# tracking_system: file-system
+# story_location: _bmad-output/implementation-artifacts
+
+# STATUS DEFINITIONS:
+# ==================
+# Epic Status:
+#   - backlog: Epic not yet started
+#   - in-progress: Epic actively being worked on
+#   - done: All stories in epic completed
+#
+# Epic Status Transitions:
+#   - backlog → in-progress: Automatically when first story is created (via create-story)
+#   - in-progress → done: Manually when all stories reach 'done' status
+#
+# Story Status:
+#   - backlog: Story only exists in epic file
+#   - ready-for-dev: Story file created in stories folder
+#   - in-progress: Developer actively working on implementation
+#   - review: Ready for code review (via Dev's code-review workflow)
+#   - done: Story completed
+#
+# Retrospective Status:
+#   - optional: Can be completed but not required
+#   - done: Retrospective has been completed
+#
+# WORKFLOW NOTES:
+# ===============
+# - Epic transitions to 'in-progress' automatically when first story is created
+# - Stories can be worked in parallel if team capacity allows
+# - SM typically creates next story after previous one is 'done' to incorporate learnings
+# - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
+
+generated: 2026-04-09
+last_updated: 2026-04-09T10:00:00
+project: garagedom-api
+project_key: NOKEY
+tracking_system: file-system
+story_location: _bmad-output/implementation-artifacts
+
+development_status:
+  # ─── Epic 1: Fundação Técnica & Autenticação ───
+  epic-1: in-progress
+  1-1-setup-tecnico-do-projeto: review
+  1-2-registro-de-usuario-com-email-e-senha: review
+  1-3-login-e-logout-com-jwt: review
+  1-4-autenticacao-oauth-google-e-facebook: review
+  1-5-recuperacao-de-senha-por-email: review
+  1-6-exclusao-permanente-de-conta-lgpd: review
+  epic-1-retrospective: optional
+
+  # ─── Epic 2: Perfis & Mapa de Descoberta Geográfica ───
+  epic-2: backlog
+  2-1-criacao-de-perfil-com-geocoding: backlog
+  2-2-edicao-de-perfil: backlog
+  2-3-controle-de-visibilidade-no-mapa-lgpd: backlog
+  2-4-visualizacao-de-perfil-publico: backlog
+  2-5-endpoint-de-pins-do-mapa: backlog
+  epic-2-retrospective: optional
+
+  # ─── Epic 3: Sistema de Conexões entre Bandas ───
+  epic-3: backlog
+  3-1-enviar-convite-de-conexao: backlog
+  3-2-responder-a-convite-de-conexao: backlog
+  3-3-listar-conexoes-ativas: backlog
+  3-4-desfazer-conexao: backlog
+  epic-3-retrospective: optional
+
+  # ─── Epic 4: Workflow de Propostas de Eventos ───
+  epic-4: backlog
+  4-1-criar-proposta-fluxo-banda-com-conexao: backlog
+  4-2-criar-proposta-fluxo-venue-e-produtor: backlog
+  4-3-venue-responde-a-proposta: backlog
+  4-4-cancelar-proposta: backlog
+  4-5-historico-de-propostas: backlog
+  epic-4-retrospective: optional
+
+  # ─── Epic 5: Comunicação em Tempo Real ───
+  epic-5: backlog
+  5-1-iniciar-conversa-e-historico: backlog
+  5-2-chat-em-tempo-real-via-actioncable: backlog
+  5-3-notificacoes-in-app-via-actioncable: backlog
+  5-4-denuncia-de-mensagem: backlog
+  epic-5-retrospective: optional
+
+  # ─── Epic 6: Mini Landing Pages ───
+  epic-6: backlog
+  6-1-criar-landing-page-com-slug-publico: backlog
+  6-2-editar-blocos-de-conteudo: backlog
+  6-3-acesso-publico-a-landing-page: backlog
+  epic-6-retrospective: optional
+
+  # ─── Epic 7: Administração & Moderação ───
+  epic-7: backlog
+  7-1-painel-de-metricas-da-plataforma: backlog
+  7-2-moderacao-de-perfis-e-bloqueio-de-usuarios: backlog
+  7-3-gestao-de-denuncias: backlog
+  epic-7-retrospective: optional

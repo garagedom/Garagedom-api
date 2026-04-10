@@ -1,0 +1,39 @@
+services:
+  postgres:
+    image: postgres:14-alpine
+    environment:
+      POSTGRES_USER: garagedom
+      POSTGRES_PASSWORD: garagedom
+      POSTGRES_DB: garagedom_api_development
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U garagedom -d garagedom_api_development"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    command: bash -c "bundle exec rails db:create db:migrate && ./bin/rails server -b 0.0.0.0"
+    volumes:
+      - .:/rails
+      - bundle_cache:/usr/local/bundle
+    ports:
+      - "3000:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      RAILS_ENV: development
+      DB_HOST: postgres
+      DB_USERNAME: garagedom
+      DB_PASSWORD: garagedom
+
+volumes:
+  postgres_data:
+  bundle_cache:

@@ -22,6 +22,7 @@ gem "devise-jwt"
 # OAuth providers
 gem "omniauth-google-oauth2"
 gem "omniauth-facebook"
+gem "omniauth-rails_csrf_protection"
 
 # Geolocation
 gem "geocoder"

@@ -31,9 +31,8 @@ FROM base
 COPY --from=build "${BUNDLE_PATH}" "${BUNDLE_PATH}"
 COPY --from=build /rails /rails
 
-RUN groupadd --system rails && \
-    useradd rails --uid 1000 --gid 1000 --create-home
-USER 1000:1000
+RUN useradd -m rails
+USER rails
 
 EXPOSE 3000
 

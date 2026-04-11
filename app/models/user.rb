@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   include Devise::JWT::RevocationStrategies::JTIMatcher
 
+  has_one :profile, dependent: :destroy
+
   devise :database_authenticatable, :registerable,
          :recoverable, :validatable,
          :omniauthable,

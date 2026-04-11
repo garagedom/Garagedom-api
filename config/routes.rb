@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       delete "account", to: "accounts#destroy"
+      resources :profiles, only: [ :create, :show, :update ]
+      get "map/pins", to: "map#pins"
     end
   end
 

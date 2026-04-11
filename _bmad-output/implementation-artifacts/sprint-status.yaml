@@ -35,7 +35,7 @@
 # - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
 
 generated: 2026-04-09
-last_updated: 2026-04-09T10:00:00
+last_updated: 2026-04-11T23:00:00
 project: garagedom-api
 project_key: NOKEY
 tracking_system: file-system
@@ -53,12 +53,12 @@ development_status:
   epic-1-retrospective: optional
 
   # ─── Epic 2: Perfis & Mapa de Descoberta Geográfica ───
-  epic-2: backlog
-  2-1-criacao-de-perfil-com-geocoding: backlog
-  2-2-edicao-de-perfil: backlog
-  2-3-controle-de-visibilidade-no-mapa-lgpd: backlog
-  2-4-visualizacao-de-perfil-publico: backlog
-  2-5-endpoint-de-pins-do-mapa: backlog
+  epic-2: in-progress
+  2-1-criacao-de-perfil-com-geocoding: review
+  2-2-edicao-de-perfil: review
+  2-3-controle-de-visibilidade-no-mapa-lgpd: review
+  2-4-visualizacao-de-perfil-publico: review
+  2-5-endpoint-de-pins-do-mapa: review
   epic-2-retrospective: optional
 
   # ─── Epic 3: Sistema de Conexões entre Bandas ───

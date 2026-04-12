@@ -22,6 +22,8 @@ Rails.application.routes.draw do
     end
   end
 
+  mount ActionCable.server => "/cable"
+
   # Health check
   get "up" => "rails/health#show", as: :rails_health_check
 end

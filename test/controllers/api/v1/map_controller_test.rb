@@ -68,12 +68,39 @@ module Api
         assert_not_includes ids, @no_coords.id
       end
 
-      test "cada pin contém apenas id, name, profile_type, latitude, longitude" do
+      test "cada pin contém id, name, profile_type, latitude, longitude, city, music_genre e logo_url" do
         get "/api/v1/map/pins", headers: auth_headers(@token), as: :json
 
         pin = JSON.parse(response.body).find { |p| p["id"] == @band.id }
         assert_not_nil pin
-        assert_equal %w[id latitude longitude name profile_type], pin.keys.sort
+        assert_equal %w[city id latitude logo_url longitude music_genre name profile_type], pin.keys.sort
+      end
+
+      test "pin inclui logo_url quando logo está anexado" do
+        file = fixture_file_upload("logo.png", "image/png")
+        @band.logo.attach(file)
+        get "/api/v1/map/pins", headers: auth_headers(@token), as: :json
+
+        pins = JSON.parse(response.body)
+        band_pin = pins.find { |p| p["id"] == @band.id }
+        assert_not_nil band_pin["logo_url"]
+        assert_match(/logo/, band_pin["logo_url"])
+      end
+
+      test "pin tem logo_url nulo quando sem logo" do
+        get "/api/v1/map/pins", headers: auth_headers(@token), as: :json
+
+        pins = JSON.parse(response.body)
+        band_pin = pins.find { |p| p["id"] == @band.id }
+        assert_nil band_pin["logo_url"]
+      end
+
+      test "pin inclui city e music_genre" do
+        get "/api/v1/map/pins", headers: auth_headers(@token), as: :json
+
+        pin = JSON.parse(response.body).find { |p| p["id"] == @band.id }
+        assert_equal "Jundiaí", pin["city"]
+        assert_equal "Rock", pin["music_genre"]
       end
 
       test "filtra por profile_type=band" do

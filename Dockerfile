@@ -36,4 +36,4 @@ USER rails
 
 EXPOSE 3000
 
-CMD ["sh", "-c", "bundle exec rails db:migrate && bundle exec puma -C config/puma.rb"]
+CMD ["sh", "-c", "bundle exec rails db:prepare && bundle exec puma -C config/puma.rb"]

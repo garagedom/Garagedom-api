@@ -16,9 +16,11 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      post "auth/refresh", to: "refresh#create"
       delete "account", to: "accounts#destroy"
       resources :profiles, only: [ :create, :show, :update ]
       get "map/pins", to: "map#pins"
+      get "users/me", to: "users#me"
     end
   end
 

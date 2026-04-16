@@ -30,9 +30,21 @@ module Api
 
         status_code = user.previously_new_record? ? :created : :ok
         token, _payload = Warden::JWTAuth::UserEncoder.new.call(user, :user, nil)
+        refresh_token = RefreshToken.generate_for(user)
+        set_refresh_cookie(refresh_token.token)
         response.headers["Authorization"] = "Bearer #{token}"
         render json: { token: token, user: { id: user.id, email: user.email } },
                status: status_code
+      end
+
+      def set_refresh_cookie(token)
+        cookies.signed[:refresh_token] = {
+          value: token,
+          httponly: true,
+          secure: Rails.env.production?,
+          same_site: :strict,
+          expires: RefreshToken::EXPIRY.from_now
+        }
       end
     end
   end

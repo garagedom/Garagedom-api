@@ -15,7 +15,13 @@ class Profile < ApplicationRecord
   private
 
   def enqueue_geocoding_if_city_changed
-    GeocodingJob.perform_later(id) if saved_change_to_city?
+    return unless saved_change_to_city?
+
+    if Rails.env.development?
+      GeocodingJob.perform_now(id)
+    else
+      GeocodingJob.perform_later(id)
+    end
   end
 
   def broadcast_map_changes
